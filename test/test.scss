@@ -1,0 +1,26 @@
+@mixin naszMixin {
+    display: block;
+    position: absolute;
+    background-color: $moj-color;
+}
+
+$dlugosc: 35px;
+$moj-color: #ffb518;
+$moj-color2: #bb005c;
+
+a {
+    color: $moj-color;
+    @include naszMixin();
+    width: $dlugosc*4;
+    > span, div {
+        background-color: $moj-color2;
+        div {
+            @include naszMixin();
+        }
+    }
+}
+
+p {
+    color: $moj-color;
+}
+

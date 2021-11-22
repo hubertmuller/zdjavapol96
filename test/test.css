@@ -1,0 +1,21 @@
+a {
+  color: #ffb518;
+  display: block;
+  position: absolute;
+  background-color: #ffb518;
+  width: 140px;
+}
+a > span, a div {
+  background-color: #bb005c;
+}
+a > span div, a div div {
+  display: block;
+  position: absolute;
+  background-color: #ffb518;
+}
+
+p {
+  color: #ffb518;
+}
+
+/*# sourceMappingURL=test.css.map */
