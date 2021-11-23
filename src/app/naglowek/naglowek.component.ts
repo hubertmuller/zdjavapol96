@@ -1,13 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { KalkulatorService } from '../kalkulator.service';
 
 @Component({
   selector: 'app-naglowek',
   templateUrl: './naglowek.component.html',
-  styleUrls: ['./naglowek.component.scss']
+  styleUrls: ['./naglowek.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class NaglowekComponent implements OnInit {
 
-  constructor() { }
+  public imie: string;
+  private kalkulator: KalkulatorService;
+
+  //constructor(private kalkulator: KalkulatorService) { 
+  constructor(kalkulator: KalkulatorService) { 
+    let nazwisko = 'Kowlaski';
+    this.kalkulator = kalkulator;
+    this.imie = `Adam ${nazwisko} vat=${kalkulator.obliczVat(100)}`;
+  }
 
   ngOnInit(): void {
   }
