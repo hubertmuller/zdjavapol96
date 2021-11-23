@@ -1,0 +1,12 @@
+$zielony: #080;
+$bazowy_font_rozmiar: 16pt;
+
+h1 {
+    color: $zielony;
+    font-size: $bazowy_font_rozmiar*2;
+}
+
+p {
+    color: $zielony;
+    font-size: $bazowy_font_rozmiar;
+}
