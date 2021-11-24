@@ -6,6 +6,7 @@ const server = http.createServer(
         console.log('przyszlo zapytanie');
         res.statusCode = 200;
         res.setHeader('Content-type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.end(`
             [
                 {

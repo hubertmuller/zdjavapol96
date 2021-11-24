@@ -2,7 +2,11 @@
     Lista zapisanych
 </h2>
 
-<table>
+<p *ngIf="!ludzie">
+    Ładuję dane...
+</p>
+
+<table *ngIf="ludzie">
     <tr>
         <th>Id</th>
         <th>Imię</th>

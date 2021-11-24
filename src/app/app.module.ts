@@ -8,6 +8,7 @@ import { StopkaComponent } from './stopka/stopka.component';
 import { BladComponent } from './blad/blad.component';
 import { ListaComponent } from './lista/lista.component';
 import { FormularzComponent } from './formularz/formularz.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormularzComponent } from './formularz/formularz.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

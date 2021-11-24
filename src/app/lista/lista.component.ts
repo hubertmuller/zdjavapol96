@@ -8,15 +8,19 @@ import { ListaService, Czlowiek } from '../lista.service';
 })
 export class ListaComponent implements OnInit, OnDestroy {
 
-  public ludzie: Czlowiek[];
+  public ludzie: Czlowiek[] | null;
 
   constructor(private listaService: ListaService) { 
-    this.ludzie = [];
+    this.ludzie = null;
   }
 
   ngOnInit(): void {
     console.log('ngoninit');
-    this.ludzie = this.listaService.loadLudzie();
+    this.listaService.loadLudzie().subscribe( (ludzie) => {
+      this.ludzie = ludzie;
+    } 
+
+    )
   }
 
   ngOnDestroy(): void {
