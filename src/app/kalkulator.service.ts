@@ -10,5 +10,6 @@ export class KalkulatorService {
 
   obliczVat(kwota: number): number {
     return kwota * this.vat;
+
   }
 }
