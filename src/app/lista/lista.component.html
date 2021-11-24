@@ -1,1 +1,18 @@
-<p>lista works!</p>
+<h2>
+    Lista zapisanych
+</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Operacje</th>
+    </tr>
+    <tr *ngFor="let czlowiek of ludzie">
+        <td>{{czlowiek.id}}</td>
+        <td>{{czlowiek.imie}}</td>
+        <td>{{czlowiek.nazwisko}}</td>
+        <td>Edytuj Usun</td>
+    </tr>
+</table>
