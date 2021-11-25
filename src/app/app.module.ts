@@ -11,6 +11,7 @@ import { FormularzComponent } from './formularz/formularz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeleteComponent } from './delete/delete.component';
 import { UpdateComponent } from './update/update.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UpdateComponent } from './update/update.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
