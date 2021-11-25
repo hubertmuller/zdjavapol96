@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formularz',
@@ -7,7 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularzComponent implements OnInit {
 
-  constructor() { }
+  public forma: FormGroup = new FormGroup ( 
+    {
+        imie: new FormControl( 'Jan', {
+          validators: [Validators.minLength(2)],
+          updateOn: "blur"
+        }),
+        nazwisko: new FormControl( 'Jan', {
+          validators: [Validators.minLength(2), Validators.maxLength(30)],
+          updateOn: "change"
+        })
+    }
+  );
+
+  constructor() { 
+
+  }
 
   ngOnInit(): void {
   }
