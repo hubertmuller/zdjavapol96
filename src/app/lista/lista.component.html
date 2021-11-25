@@ -17,6 +17,9 @@
         <td>{{czlowiek.id}}</td>
         <td>{{czlowiek.imie}}</td>
         <td>{{czlowiek.nazwisko}}</td>
-        <td>Edytuj Usun</td>
+        <td>
+            <a [routerLink]="['..','update', czlowiek.id]" >Edytuj</a>
+            <a [routerLink]="['..','delete', czlowiek.id]" >Usun</a>
+        </td>
     </tr>
 </table>

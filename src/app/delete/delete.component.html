@@ -1,1 +1,6 @@
-<p>delete works!</p>
+<p *ngIf="!deleted">
+    Usuwam...
+</p>
+<p *ngIf="deleted">
+    Usunieto osobe o id={{deletedId}}
+</p>
