@@ -19,7 +19,7 @@ export class ListaService {
     const myHeaders = new HttpHeaders();
     myHeaders.append('Accept', 'application/json');
     return this.http.get<Czlowiek[]>(
-      'http://localhost:3200', 
+      'http://localhost:3200/lista', 
       {headers: myHeaders}
     );
   }
