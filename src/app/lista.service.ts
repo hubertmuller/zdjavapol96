@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from './../environments/environment';
+
 
 export interface Czlowiek {
   id: number;
@@ -19,7 +21,7 @@ export class ListaService {
     const myHeaders = new HttpHeaders();
     myHeaders.append('Accept', 'application/json');
     return this.http.get<Czlowiek[]>(
-      'http://localhost:3200/lista', 
+      environment.endpointUrl + '/lista', 
       {headers: myHeaders}
     );
   }
@@ -28,7 +30,7 @@ export class ListaService {
     const myHeaders = new HttpHeaders();
     myHeaders.append('Accept', 'application/json');
     return this.http.delete<any>(
-      'http://localhost:3200/czlowiek/' + id,
+      environment.endpointUrl + '/czlowiek/' + id,
       {headers: myHeaders}
     );
   }
