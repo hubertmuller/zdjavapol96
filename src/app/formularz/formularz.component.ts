@@ -33,10 +33,22 @@ export class FormularzComponent implements OnInit {
   );
 
   constructor() { 
-
+    this.forma.controls['imie'].valueChanges.subscribe( (value) => {
+      if (value === "jan") {
+        this.forma.controls['plec'].setValue('m');
+      } else if (value === 'ala') {
+        this.forma.controls['plec'].setValue('k');
+      } 
+    })
   }
 
   ngOnInit(): void {
+
   }
+
+  public kasuj(): void {
+    this.forma.controls['imie'].setValue('');
+    this.forma.controls['nazwisko'].setValue('');
+  } 
 
 }
