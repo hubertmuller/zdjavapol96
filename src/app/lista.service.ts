@@ -5,9 +5,16 @@ import { environment } from './../environments/environment';
 
 
 export interface Czlowiek {
-  id: number;
+  id?: number;
   imie: string;
   nazwisko: string;
+  plec: string;
+  komentarze: string;
+  typ: string;
+  zyczenia: {
+    a: boolean;
+    b: boolean;
+  }
 }
 
 @Injectable({
@@ -31,6 +38,16 @@ export class ListaService {
     myHeaders.append('Accept', 'application/json');
     return this.http.delete<any>(
       environment.endpointUrl + '/czlowiek/' + id,
+      {headers: myHeaders}
+    );
+  }
+
+  zapiszCzlowiek(czlowiek: Czlowiek): Observable<any> {
+    const myHeaders = new HttpHeaders();
+    myHeaders.append('Accept', 'application/json');
+    return this.http.post<any>(
+      environment.endpointUrl + '/czlowiek',
+      czlowiek,
       {headers: myHeaders}
     );
   }

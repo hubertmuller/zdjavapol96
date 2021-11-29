@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Czlowiek, ListaService } from '../lista.service';
 
 @Component({
   selector: 'app-formularz',
   templateUrl: './formularz.component.html',
   styleUrls: ['./formularz.component.scss']
 })
-export class FormularzComponent implements OnInit {
+export class FormularzComponent implements OnInit, OnDestroy {
+
+  private imieSub: Subscription;
 
   public forma: FormGroup = new FormGroup ( 
     {
@@ -32,8 +37,9 @@ export class FormularzComponent implements OnInit {
     }
   );
 
-  constructor() { 
-    this.forma.controls['imie'].valueChanges.subscribe( (value) => {
+  constructor(private listaService: ListaService,
+    private router: Router) { 
+    this.imieSub = this.forma.controls['imie'].valueChanges.subscribe( (value) => {
       if (value === "jan") {
         this.forma.controls['plec'].setValue('m');
       } else if (value === 'ala') {
@@ -51,4 +57,30 @@ export class FormularzComponent implements OnInit {
     this.forma.controls['nazwisko'].setValue('');
   } 
 
+  public zapisz(): void {
+    const forma: { [p: string]: AbstractControl } = this.forma.controls;
+
+    const czlowiek: Czlowiek = {
+      imie: forma['imie'].value,
+      nazwisko: forma['nazwisko'].value,
+      komentarze: forma['komentarze'].value,
+      plec: forma['plec'].value,
+      typ: forma['typ'].value,
+      zyczenia: {
+        a: forma['zyczenia'].value.a,
+        b: forma['zyczenia'].value.b
+      }
+    }
+
+    this.listaService.zapiszCzlowiek(czlowiek).subscribe( (_) => {
+      console.log('udalo sie zapisac');
+      this.router.navigate(['/']);
+    }
+    )
+
+  }
+
+  ngOnDestroy(): void {
+    this.imieSub.unsubscribe();
+  }
 }

@@ -59,8 +59,8 @@
         </textarea>
     </div>
 
-    <div>
-        <input type="submit" value="Zapisz">
+    <div *ngIf="forma.valid">
+        <input type="submit" value="Zapisz" (click)="zapisz()">
     </div>
 
     <div>

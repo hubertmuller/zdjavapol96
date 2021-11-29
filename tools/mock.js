@@ -9,6 +9,7 @@ const server = http.createServer(
         res.setHeader('Content-type', 'application/json');
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        res.setHeader('Access-Control-Allow-Headers', '*');
         
         if (req.method == 'GET' && req.url == '/lista') {
             res.end(`
@@ -27,7 +28,10 @@ const server = http.createServer(
             `);
         } else if (req.method == 'DELETE' && req.url.startsWith('/czlowiek')) {
             res.end('');
-        } else {
+        }  else if (req.method == 'POST' && req.url.startsWith('/czlowiek')) {
+            res.end('');
+        }
+         else {
             res.end('');
         }
     }
