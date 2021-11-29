@@ -1,4 +1,19 @@
+{{ forma.value | json }}
+
 <form [formGroup]="forma">
     <input formControlName="imie" length="20">
     <input formControlName="nazwisko" length="30">
+    <ul *ngIf="forma.controls['nazwisko'].errors">
+        <li *ngIf="forma.controls['nazwisko'].errors['maxlength']">
+        Wpisałeś {{ forma.controls['nazwisko'].errors['maxlength'].actualLength }} znaków
+        a możesz najwyżej {{ forma.controls['nazwisko'].errors['maxlength'].requiredLength }}!
+        </li>
+        <li *ngIf="forma.controls['nazwisko'].errors['minlength']">
+            Wpisałeś {{ forma.controls['nazwisko'].errors['minlength'].actualLength }} znaków
+            a powinienes przynajmniej {{ forma.controls['nazwisko'].errors['minlength'].requiredLength }}!
+        </li>
+        <li *ngIf="forma.controls['nazwisko'].errors['required']">
+            Nazwisko jest wymagane
+        </li>
+    </ul>
 </form>
