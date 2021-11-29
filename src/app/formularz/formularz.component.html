@@ -1,19 +1,66 @@
-{{ forma.value | json }}
+<pre>{{ forma.value | json }}</pre>
 
 <form [formGroup]="forma">
-    <input formControlName="imie" length="20">
-    <input formControlName="nazwisko" length="30">
-    <ul *ngIf="forma.controls['nazwisko'].errors">
-        <li *ngIf="forma.controls['nazwisko'].errors['maxlength']">
-        Wpisałeś {{ forma.controls['nazwisko'].errors['maxlength'].actualLength }} znaków
-        a możesz najwyżej {{ forma.controls['nazwisko'].errors['maxlength'].requiredLength }}!
-        </li>
-        <li *ngIf="forma.controls['nazwisko'].errors['minlength']">
-            Wpisałeś {{ forma.controls['nazwisko'].errors['minlength'].actualLength }} znaków
-            a powinienes przynajmniej {{ forma.controls['nazwisko'].errors['minlength'].requiredLength }}!
-        </li>
-        <li *ngIf="forma.controls['nazwisko'].errors['required']">
-            Nazwisko jest wymagane
-        </li>
-    </ul>
+    <div>
+        <label for="imieid">Imie</label>
+        <input formControlName="imie" length="20" id="imieid" type="text">
+    </div>
+    <div>
+        <label for="nazwiskoid">Nazwisko</label>
+        <input formControlName="nazwisko" length="30" id="nazwiskoid" type="text">
+        <ul *ngIf="forma.controls['nazwisko'].errors">
+            <li *ngIf="forma.controls['nazwisko'].errors['maxlength']">
+            Wpisałeś {{ forma.controls['nazwisko'].errors['maxlength'].actualLength }} znaków
+            a możesz najwyżej {{ forma.controls['nazwisko'].errors['maxlength'].requiredLength }}!
+            </li>
+            <li *ngIf="forma.controls['nazwisko'].errors['minlength']">
+                Wpisałeś {{ forma.controls['nazwisko'].errors['minlength'].actualLength }} znaków
+                a powinienes przynajmniej {{ forma.controls['nazwisko'].errors['minlength'].requiredLength }}!
+            </li>
+            <li *ngIf="forma.controls['nazwisko'].errors['required']">
+                Nazwisko jest wymagane
+            </li>
+        </ul>
+    </div>
+    <div>
+        <fieldset>
+            <legend>Płeć:</legend>
+            <input type="radio" value="k" formControlName="plec" id="kobietaid">
+            <label for="kobietaid">Kobieta</label>
+            <input type="radio" value="m" formControlName="plec" id="mezczyznaid">
+            <label for="mezczyznaid">Mężczyzna</label>
+        </fieldset>
+    </div>
+
+    <!--div>
+        <fieldset [formGroup]="forma.controls['zyczenia']">
+            <legend>Zyczenia:</legend>
+            <input type="checkbox" formControlName="a" id="nagrodaid">
+            <label for="nagrodaid">chce nagrode</label>
+            <input type="checkbox" formControlName="b" id="potwierdzenieid">
+            <label for="potwierdzenieid">chce potwierdzenie</label>
+        </fieldset>
+    </div-->
+    <div>
+        <label for="typid">Typ szczepionki</label>
+        <select formControlName="typ" id="typid">
+            <option [ngValue]="null" disabled selected>Wybierz</option>
+            <option [ngValue]="1">Astra zeneca</option>
+            <option [ngValue]="2">Pfizer</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="komid">Komentarze</label>
+        <textarea formControlName="komentarze"
+        rows="10"
+        cols="40" 
+        id="komid">
+        </textarea>
+    </div>
+
+    <div>
+        <input type="submit" value="Zapisz">
+    </div>
+
 </form>

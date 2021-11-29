@@ -18,15 +18,17 @@ export class FormularzComponent implements OnInit {
           validators: [Validators.minLength(2), Validators.maxLength(30), Validators.required],
           updateOn: "change"
         }),
-        plec: new FormControl('', {
+        plec: new FormControl(null, {
           validators: [Validators.required],
-          updateOn: "blur"
+          updateOn: "change"
         }),
         zyczenia: new FormGroup({
           a: new FormControl(true),
           b: new FormControl(false)
         }
-        )
+        ),
+        typ: new FormControl(null, Validators.required),
+        komentarze: new FormControl("", Validators.maxLength(120))
     }
   );
 
