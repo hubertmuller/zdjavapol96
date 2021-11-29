@@ -32,15 +32,15 @@
         </fieldset>
     </div>
 
-    <!--div>
-        <fieldset [formGroup]="forma.controls['zyczenia']">
+    <div>
+        <fieldset formGroupName="zyczenia">
             <legend>Zyczenia:</legend>
             <input type="checkbox" formControlName="a" id="nagrodaid">
             <label for="nagrodaid">chce nagrode</label>
             <input type="checkbox" formControlName="b" id="potwierdzenieid">
             <label for="potwierdzenieid">chce potwierdzenie</label>
         </fieldset>
-    </div-->
+    </div>
     <div>
         <label for="typid">Typ szczepionki</label>
         <select formControlName="typ" id="typid">
