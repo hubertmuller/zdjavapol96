@@ -1,25 +1,28 @@
-<h2>
-    Lista zapisanych
-</h2>
+<div id="main">
+    <h2>
+        Lista zapisanych
+    </h2>
 
-<p *ngIf="!ludzie">
-    Ładuję dane...
-</p>
+    <p *ngIf="!ludzie">
+        Ładuję dane...
+    </p>
 
-<table *ngIf="ludzie">
-    <tr>
-        <th>Id</th>
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>Operacje</th>
-    </tr>
-    <tr *ngFor="let czlowiek of ludzie">
-        <td>{{czlowiek.id}}</td>
-        <td>{{czlowiek.imie}}</td>
-        <td>{{czlowiek.nazwisko}}</td>
-        <td>
-            <a [routerLink]="['..','update', czlowiek.id]" >Edytuj</a>
-            <a [routerLink]="['..','delete', czlowiek.id]" >Usun</a>
-        </td>
-    </tr>
-</table>
+
+    <table *ngIf="ludzie">
+        <tr>
+            <th>Id</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Operacje</th>
+        </tr>
+        <tr *ngFor="let czlowiek of ludzie">
+            <td>{{czlowiek.id}}</td>
+            <td>{{czlowiek.imie}}</td>
+            <td>{{czlowiek.nazwisko}}</td>
+            <td>
+                <a [routerLink]="['..','update', czlowiek.id]" >Edytuj</a>
+                <a [routerLink]="['..','delete', czlowiek.id]" >Usun</a>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -12,14 +12,15 @@ import { Czlowiek, ListaService } from '../lista.service';
 export class FormularzComponent implements OnInit, OnDestroy {
 
   private imieSub: Subscription;
+  addMode = true;
 
   public forma: FormGroup = new FormGroup ( 
     {
-        imie: new FormControl( 'Jan', {
+        imie: new FormControl( '', {
           validators: [Validators.minLength(2), Validators.required],
           updateOn: "change"
         }),
-        nazwisko: new FormControl( 'Kowalski', {
+        nazwisko: new FormControl( '', {
           validators: [Validators.minLength(2), Validators.maxLength(30), Validators.required],
           updateOn: "change"
         }),
@@ -28,7 +29,7 @@ export class FormularzComponent implements OnInit, OnDestroy {
           updateOn: "change"
         }),
         zyczenia: new FormGroup({
-          a: new FormControl(true),
+          a: new FormControl(false),
           b: new FormControl(false)
         }
         ),
@@ -40,6 +41,7 @@ export class FormularzComponent implements OnInit, OnDestroy {
   constructor(private listaService: ListaService,
     private router: Router) { 
     this.imieSub = this.forma.controls['imie'].valueChanges.subscribe( (value) => {
+      //przykladowa reakcja na zmiane w polach
       if (value === "jan") {
         this.forma.controls['plec'].setValue('m');
       } else if (value === 'ala') {
@@ -77,8 +79,8 @@ export class FormularzComponent implements OnInit, OnDestroy {
       this.router.navigate(['/']);
     }
     )
-
   }
+
 
   ngOnDestroy(): void {
     this.imieSub.unsubscribe();

@@ -1,5 +1,8 @@
+<div id="main">
 <pre>{{ forma.value | json }}</pre>
 
+<h1 *ngIf="addMode">Dodawanie osoby</h1>
+<h1 *ngIf="!addMode">Edycja osoby</h1>
 <form [formGroup]="forma">
     <div>
         <label for="imieid">Imie</label>
@@ -64,8 +67,9 @@
     </div>
 
     <div>
-        <input type="button" (click)="kasuj()" value="Kasuj">
+        <input type="button" (click)="kasuj()" value="Wyczyść">
     </div>
 
 
 </form>
+</div>

@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { FormularzComponent } from '../formularz/formularz.component';
 
 @Component({
   selector: 'app-update',
-  templateUrl: './update.component.html',
-  styleUrls: ['./update.component.scss']
+  templateUrl: './../formularz/formularz.component.html',
+  styleUrls: ['./../formularz/formularz.component.scss']
 })
-export class UpdateComponent implements OnInit {
+export class UpdateComponent extends FormularzComponent implements OnInit {
 
-  constructor() { }
+  // uwaga ten komponent dziedziczy i uzywa templatow komponentu formularz (Celowo aby nie powtarzeac kodu)
+  override addMode = false;
 
-  ngOnInit(): void {
+  public override zapisz(): void {
+      //nadpisujemy metode z klasy bazowej.
+      //tym razem aktualizujemy wiec uzyjemy id
+      
   }
 
 }

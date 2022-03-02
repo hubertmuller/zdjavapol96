@@ -26,3 +26,11 @@ tr:hover {
     cursor: pointer;
 }
 
+a {
+    text-decoration: none;
+    &:hover {
+        background-color: #dfd;
+    }
+    margin-right: 8px;
+    padding: 4px;
+}

@@ -21,7 +21,7 @@ export interface Czlowiek {
   providedIn: 'root'
 })
 export class ListaService {
-
+  
   constructor(private http: HttpClient) {}
 
   loadLudzie(): Observable<Czlowiek[]> {
@@ -52,5 +52,22 @@ export class ListaService {
     );
   }
 
+  loadCzlowiek(id: number): Observable<Czlowiek> {
+    const myHeaders = new HttpHeaders();
+    myHeaders.append('Accept', 'application/json');
+    return this.http.get<Czlowiek>(
+      environment.endpointUrl + '/czlowiek/' + id, 
+      {headers: myHeaders}
+    );
+  }
 
+  updateCzlowiek(czlowiek: Czlowiek): Observable<any> {
+    const myHeaders = new HttpHeaders();
+    myHeaders.append('Accept', 'application/json');
+    return this.http.put<any>(
+      environment.endpointUrl + '/czlowiek/' + czlowiek.id,
+      czlowiek,
+      {headers: myHeaders}
+    );
+  }
 }

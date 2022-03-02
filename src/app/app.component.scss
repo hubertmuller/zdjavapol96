@@ -10,3 +10,20 @@ p {
     color: $zielony;
     font-size: $bazowy_font_rozmiar;
 }
+
+ul {
+    list-style-type: none;
+    padding: 10px;
+}
+
+li > a {
+    text-decoration: none;
+    padding: 8px;
+    &:hover {
+        background-color: rgb(128, 255, 128);
+    }
+}
+
+li {
+    display: inline;
+}

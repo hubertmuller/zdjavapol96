@@ -14,9 +14,9 @@ export class NaglowekComponent implements OnInit {
 
   //constructor(private kalkulator: KalkulatorService) { 
   constructor(kalkulator: KalkulatorService) { 
-    let nazwisko = 'Kowlaski';
+    let nazwisko = 'Adam';
     this.kalkulator = kalkulator;
-    this.imie = `Adam ${nazwisko} vat=${kalkulator.obliczVat(100)}`;
+    this.imie = `${nazwisko} (vat=${kalkulator.obliczVat(100)})`;
   }
 
   ngOnInit(): void {
