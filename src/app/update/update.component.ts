@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormularzComponent } from '../formularz/formularz.component';
-import { ListaService } from '../lista.service';
+import { Czlowiek, ListaService } from '../lista.service';
 
 @Component({
   selector: 'app-update',
@@ -18,6 +19,28 @@ export class UpdateComponent extends FormularzComponent implements OnInit {
       //nadpisujemy metode z klasy bazowej.
       //tym razem aktualizujemy wiec uzyjemy id
 
+      //zwroccie uwage na podobienstwo metody zapisz w bazowej i tej klasie
+      //tu mozliwa jest optymalizacja ilosci kodu
+      const forma: { [p: string]: AbstractControl } = this.forma.controls;
+
+      const czlowiek: Czlowiek = {
+        id: this.czlowiekId,
+        imie: forma['imie'].value,
+        nazwisko: forma['nazwisko'].value,
+        komentarze: forma['komentarze'].value,
+        plec: forma['plec'].value,
+        typ: forma['typ'].value,
+        zyczenia: {
+          a: forma['zyczenia'].value.a,
+          b: forma['zyczenia'].value.b
+        }
+      }
+  
+      this.listaService.updateCzlowiek(czlowiek).subscribe( (_) => {
+        console.log('udalo sie zapisac');
+        this.router.navigate(['/']);
+      }
+      )
   }
 
   constructor (listaService: ListaService,

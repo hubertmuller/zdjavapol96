@@ -39,7 +39,7 @@ export class FormularzComponent implements OnInit, OnDestroy {
   );
 
   constructor(public listaService: ListaService,
-    private router: Router) { 
+    public router: Router) { 
     this.imieSub = this.forma.controls['imie'].valueChanges.subscribe( (value) => {
       //przykladowa reakcja na zmiane w polach
       if (value === "jan") {
